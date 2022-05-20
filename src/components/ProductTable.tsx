@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import {products} from '../components/Products.json';
-import {upgrades} from './UpgradesJson.json'
+import {upgrade } from './UpgradesJson.json'
 
 export const ProductTable = ({ table }: ProductTable) => {
     const [myTableHead, setTableHeads] = useState<Array<string>>([]);
@@ -9,7 +9,7 @@ export const ProductTable = ({ table }: ProductTable) => {
     useEffect(() => {
         const tableType = detecTypeOfObject(table);
         if(tableType === 'product'){
-            const tempTable = table as Array<produtcs>
+            const tempTable = table as Array<products>
             const heads = ['finishes', ...tempTable.map((product) => product.product)];
             setTableHeads(heads);
             const body: Array<string | number>[] = [...tempTable[0]['finishes'].map(f => [f.finish])];
@@ -52,5 +52,6 @@ export const ProductTable = ({ table }: ProductTable) => {
             }
         </tbody>
     </table>
+    }
 
-export default DinamicTable;
+export default ProductTable;
